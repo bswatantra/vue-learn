@@ -9,12 +9,12 @@ let mutations={
 		let index=state.posts.findIndex(item => item.id===post.id);
 		state.posts.splice(index,1);
 	},
-	EDIT_POST(state,post) {
-		let index=state.posts.findIndex(item => item.id===post.id);
-		state.posts.splice(index,1);
+	LOADING(state,loading) {
+		state.loading=loading;
 	},
-	loading(state,newLoading) {
-		state.loading=newLoading;
+	RECORD_ERRORS(state,errors) {
+		state.errors.length=0;
+		state.errors=errors;
 	},
 };
 export default mutations;

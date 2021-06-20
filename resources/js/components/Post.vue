@@ -1,6 +1,7 @@
 <template>
   <div class="w-full px-4 md:px-12 text-xl text-gray-800 leading-normal">
     <CreatePost />
+
     <p class="text-center text-semibold text-2xl text-green-400" v-if="loading">
       Loading...
     </p>
@@ -251,9 +252,6 @@ export default {
   methods: {
     deletePost(post) {
       this.$store.dispatch("deletePost", post);
-    },
-    editPost(post) {
-      this.$store.dispatch("editPost", post);
     },
   },
   computed: {

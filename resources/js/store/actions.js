@@ -3,17 +3,18 @@ let actions={
 		axios.post('/api/posts',post)
 			.then(res => {
 				commit('CREATE_POST',res.data);
-			}).catch(err => {
-				console.log(err);
+			}).catch(error => {
+				if(error.response.status===422) {
+					commit('RECORD_ERRORS',error.response.data.errors);
+				}
 			});
-
 	},
 	fetchPosts({commit}) {
-		commit('loading',true);
+		commit('LOADING',true);
 		axios.get('/api/posts')
 			.then(res => {
 				commit('FETCH_POSTS',res.data);
-				commit('loading',false);
+				commit('LOADING',false);
 			}).catch(err => {
 				console.log(err);
 			});
@@ -23,15 +24,6 @@ let actions={
 			.then(res => {
 				if(res.data==='ok')
 					commit('DELETE_POST',post);
-			}).catch(err => {
-				console.log(err);
-			});
-	},
-	editPost({commit},post) {
-		axios.delete(`/api/posts/${post.id}`)
-			.then(res => {
-				if(res.data==='ok')
-					commit('EDIT_POST',post);
 			}).catch(err => {
 				console.log(err);
 			});
