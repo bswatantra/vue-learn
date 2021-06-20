@@ -80,7 +80,7 @@ class PostController extends Controller
 	 * @param  \App\Models\Post  $post
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy(Post $post)
+	public function destroy($post)
 	{
 		Post::destroy($post);
 		return response()->json("ok");

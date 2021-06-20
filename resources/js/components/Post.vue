@@ -1,37 +1,16 @@
 <template>
-  <!--Container-->
   <div class="w-full px-4 md:px-12 text-xl text-gray-800 leading-normal">
-    <div class="mt-28 mx-20">
-      <input
-        class="
-          shadow
-          appearance-none
-          border
-          rounded
-          w-full
-          py-2
-          px-3
-          bg-gray-200
-          text-gray-700
-          leading-tight
-          focus:outline-none
-          focus:shadow-outline
-        "
-        placeholder="Create a post"
-      />
-    </div>
-
+    <CreatePost />
     <p class="text-center text-semibold text-2xl text-green-400" v-if="loading">
       Loading...
     </p>
     <div v-else>
       <div v-if="posts.length">
         <div
-          class="container w-full md:max-w-4xl lg:max-w-7xl mx-auto pt-8"
+          class="container w-full mx-16 md:max-w-4xl lg:max-w-7xl md:mx-16 pt-8"
           v-for="post in posts"
           :key="post.id"
         >
-          <!--Title-->
           <div class="font-sans">
             <h1
               class="
@@ -50,21 +29,61 @@
               Published at {{ post.created_at }}
             </p>
           </div>
-
-          <!--Post Content-->
-          <!--Lead Para-->
           <p class="py-6">
             {{ post.content }}
           </p>
 
-          <blockquote
-            class="border-l-4 border-green-500 italic my-8 pl-8 md:pl-12"
+          <button
+            class="
+              text-red-600
+              bg-transparent
+              border border-solid border-red-500
+              hover:bg-red-500
+              hover:text-white
+              font-bold
+              uppercase
+              text-sm
+              px-6
+              py-3
+              rounded
+              outline-none
+              focus:outline-none
+              mr-1
+              mb-1
+              ease-linear
+              transition-all
+              duration-150
+            "
+            type="button"
+            @click="deletePost(post)"
           >
-            Example of blockquote - Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit
-            amet ligula.
-          </blockquote>
-          <!--/ Post Content-->
+            Delete
+          </button>
+          <button
+            class="
+              text-green-400
+              bg-transparent
+              border border-solid border-green-400
+              hover:bg-green-400
+              hover:text-white
+              font-bold
+              uppercase
+              text-sm
+              px-6
+              py-3
+              rounded
+              outline-none
+              focus:outline-none
+              mr-1
+              mb-1
+              ease-linear
+              transition-all
+              duration-150
+            "
+            type="button"
+          >
+            Edit
+          </button>
         </div>
       </div>
       <div class="text-semibold text-center text-green-400 mt-4" v-else>
@@ -72,8 +91,7 @@
       </div>
     </div>
 
-    <!--Tags -->
-    <div class="mx-16">
+    <div class="mx-12">
       <div class="text-base md:text-sm text-gray-500 px-4 py-6">
         Tags:
         <a
@@ -101,10 +119,8 @@
         >
       </div>
 
-      <!--Divider-->
       <hr class="border-b-2 border-gray-400 mb-8 mx-4" />
 
-      <!--Subscribe-->
       <div class="container px-4">
         <div
           class="
@@ -170,13 +186,8 @@
             </form>
           </div>
         </div>
-
-        <!-- /Subscribe-->
-
-        <!--Divider-->
         <hr class="border-b-2 border-gray-400 mb-8 mx-4" />
 
-        <!--Next & Prev Links-->
         <div class="font-sans flex justify-between content-center px-4 pb-12">
           <div class="text-left">
             <span class="text-xs md:text-sm font-normal text-gray-600"
@@ -220,23 +231,29 @@
           </div>
         </div>
       </div>
-      <!--/Next & Prev Links-->
     </div>
   </div>
-  <!--/container-->
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 
+import CreatePost from "./CreatePost.vue";
+
 export default {
   name: "Posts",
+  components: {
+    CreatePost,
+  },
   mounted() {
     this.$store.dispatch("fetchPosts");
   },
   methods: {
     deletePost(post) {
       this.$store.dispatch("deletePost", post);
+    },
+    editPost(post) {
+      this.$store.dispatch("editPost", post);
     },
   },
   computed: {

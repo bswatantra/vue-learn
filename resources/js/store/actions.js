@@ -26,7 +26,16 @@ let actions={
 			}).catch(err => {
 				console.log(err);
 			});
-	}
+	},
+	editPost({commit},post) {
+		axios.delete(`/api/posts/${post.id}`)
+			.then(res => {
+				if(res.data==='ok')
+					commit('EDIT_POST',post);
+			}).catch(err => {
+				console.log(err);
+			});
+	},
 };
 
 export default actions;
