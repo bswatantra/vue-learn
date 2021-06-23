@@ -1959,6 +1959,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "CreatePost",
@@ -2003,11 +2009,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2344,7 +2345,8 @@ var actions = {
     var commit = _ref2.commit;
     commit('LOADING', true);
     axios.get('/api/posts').then(function (res) {
-      commit('FETCH_POSTS', res.data);
+      console.log(res);
+      commit('FETCH_POSTS', res.data.data);
       commit('LOADING', false);
     })["catch"](function (err) {
       console.log(err);
@@ -20261,6 +20263,15 @@ var render = function() {
     [
       _c("div", { staticClass: "mt-28 mx-20" }, [
         _c("div", { staticClass: "mb-4" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-gray-700 text-sm font-bold mb-2",
+              attrs: { for: "title" }
+            },
+            [_vm._v("\n        Title\n      ")]
+          ),
+          _vm._v(" "),
           _c("input", {
             directives: [
               {
@@ -20286,6 +20297,15 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "mb-4" }, [
+          _c(
+            "label",
+            {
+              staticClass: "block text-gray-700 text-sm font-bold mb-2",
+              attrs: { for: "content" }
+            },
+            [_vm._v("\n        Content\n      ")]
+          ),
+          _vm._v(" "),
           _c("textarea", {
             directives: [
               {
@@ -20765,12 +20785,55 @@ var render = function() {
                 )
           ]),
       _vm._v(" "),
-      _vm._m(0)
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1)
     ],
     1
   )
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "font-sans flex justify-between content-center px-4 pb-2 mt-4 mx-12"
+      },
+      [
+        _c("div", { staticClass: "text-left" }, [
+          _c("p", [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "\n            break-normal\n            text-base\n            md:text-sm\n            text-green-500\n            font-bold\n            no-underline\n            hover:underline\n          ",
+                attrs: { href: "#" }
+              },
+              [_vm._v("< Previous\n        ")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-right" }, [
+          _c("p", [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "\n            break-normal\n            text-base\n            md:text-sm\n            text-green-500\n            font-bold\n            no-underline\n            hover:underline\n          ",
+                attrs: { href: "#" }
+              },
+              [_vm._v("Next >\n        ")]
+            )
+          ])
+        ])
+      ]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -20866,58 +20929,7 @@ var staticRenderFns = [
           ]
         ),
         _vm._v(" "),
-        _c("hr", { staticClass: "border-b-2 border-gray-400 mb-8 mx-4" }),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass:
-              "font-sans flex justify-between content-center px-4 pb-12"
-          },
-          [
-            _c("div", { staticClass: "text-left" }, [
-              _c(
-                "span",
-                { staticClass: "text-xs md:text-sm font-normal text-gray-600" },
-                [_vm._v("< Previous Post")]
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("p", [
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "\n                break-normal\n                text-base\n                md:text-sm\n                text-green-500\n                font-bold\n                no-underline\n                hover:underline\n              ",
-                    attrs: { href: "#" }
-                  },
-                  [_vm._v("Blog title")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "text-right" }, [
-              _c(
-                "span",
-                { staticClass: "text-xs md:text-sm font-normal text-gray-600" },
-                [_vm._v("Next Post >")]
-              ),
-              _c("br"),
-              _vm._v(" "),
-              _c("p", [
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "\n                break-normal\n                text-base\n                md:text-sm\n                text-green-500\n                font-bold\n                no-underline\n                hover:underline\n              ",
-                    attrs: { href: "#" }
-                  },
-                  [_vm._v("Blog title")]
-                )
-              ])
-            ])
-          ]
-        )
+        _c("hr", { staticClass: "border-b-2 border-gray-400 mb-8 mx-4" })
       ])
     ])
   }

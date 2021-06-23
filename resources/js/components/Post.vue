@@ -92,6 +92,44 @@
       </div>
     </div>
 
+    <div
+      class="font-sans flex justify-between content-center px-4 pb-2 mt-4 mx-12"
+    >
+      <div class="text-left">
+        <p>
+          <a
+            href="#"
+            class="
+              break-normal
+              text-base
+              md:text-sm
+              text-green-500
+              font-bold
+              no-underline
+              hover:underline
+            "
+            >&lt; Previous
+          </a>
+        </p>
+      </div>
+      <div class="text-right">
+        <p>
+          <a
+            href="#"
+            class="
+              break-normal
+              text-base
+              md:text-sm
+              text-green-500
+              font-bold
+              no-underline
+              hover:underline
+            "
+            >Next &gt;
+          </a>
+        </p>
+      </div>
+    </div>
     <div class="mx-12">
       <div class="text-base md:text-sm text-gray-500 px-4 py-6">
         Tags:
@@ -188,49 +226,6 @@
           </div>
         </div>
         <hr class="border-b-2 border-gray-400 mb-8 mx-4" />
-
-        <div class="font-sans flex justify-between content-center px-4 pb-12">
-          <div class="text-left">
-            <span class="text-xs md:text-sm font-normal text-gray-600"
-              >&lt; Previous Post</span
-            ><br />
-            <p>
-              <a
-                href="#"
-                class="
-                  break-normal
-                  text-base
-                  md:text-sm
-                  text-green-500
-                  font-bold
-                  no-underline
-                  hover:underline
-                "
-                >Blog title</a
-              >
-            </p>
-          </div>
-          <div class="text-right">
-            <span class="text-xs md:text-sm font-normal text-gray-600"
-              >Next Post &gt;</span
-            ><br />
-            <p>
-              <a
-                href="#"
-                class="
-                  break-normal
-                  text-base
-                  md:text-sm
-                  text-green-500
-                  font-bold
-                  no-underline
-                  hover:underline
-                "
-                >Blog title</a
-              >
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   </div>

@@ -13,7 +13,8 @@ let actions={
 		commit('LOADING',true);
 		axios.get('/api/posts')
 			.then(res => {
-				commit('FETCH_POSTS',res.data);
+				console.log(res);
+				commit('FETCH_POSTS',res.data.data);
 				commit('LOADING',false);
 			}).catch(err => {
 				console.log(err);

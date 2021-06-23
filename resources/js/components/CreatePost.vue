@@ -2,6 +2,9 @@
   <form action="" @submit="createPost(post)">
     <div class="mt-28 mx-20">
       <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+          Title
+        </label>
         <input
           class="
             shadow
@@ -22,6 +25,9 @@
         />
       </div>
       <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="content">
+          Content
+        </label>
         <textarea
           class="
             shadow
