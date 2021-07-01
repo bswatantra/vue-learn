@@ -3,91 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-		$posts =  Post::latest()->paginate(1);
-		return response()->json($posts);
-	}
+    public function index(): JsonResponse
+    {
+        $posts = Post::latest()->paginate(1);
+        return response()->json($posts);
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function create()
-	{
-		//
-	}
+    public function store(): JsonResponse
+    {
+        request()->validate([
+            'title' => 'required|min:10|max:255',
+            'content' => 'required',
+        ]);
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store()
-	{
-		request()->validate([
-			'title' => 'required|min:10|max:255',
-			'content' => 'required',
-		]);
+        $post = Post::create(request()->only('title', 'content'));
+        return response()->json($post);
+    }
 
-		$post = Post::create(request()->only('title', 'content'));
-		return response()->json($post);
-	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Models\Post  $post
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show(Post $post)
-	{
-		//
-	}
+    public function show(Post $post): JsonResponse
+    {
+        return response()->json($post);
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  \App\Models\Post  $post
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit(Post $post)
-	{
-		//
-	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Models\Post  $post
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, Post $post)
-	{
-		//
-	}
+    public function update(Request $request, Post $post): JsonResponse
+    {
+        request()->validate([
+            'title' => 'required|min:10|max:255',
+            'content' => 'required',
+        ]);
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Models\Post  $post
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy($post)
-	{
-		Post::destroy($post);
-		return response()->json("ok");
-	}
+        $post = Post::update(request()->only('title', 'content'));
+        return response()->json($post);
+    }
+
+
+    public function destroy($post): JsonResponse
+    {
+        Post::destroy($post);
+        return response()->json("ok");
+    }
 }

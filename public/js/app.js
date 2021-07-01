@@ -2242,6 +2242,30 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -20714,13 +20738,16 @@ var render = function() {
                             "h1",
                             {
                               staticClass:
-                                "\n              font-bold font-sans\n              break-normal\n              text-gray-900\n              pt-6\n              pb-2\n              text-3xl\n              md:text-4xl\n            "
+                                "\n              font-bold font-sans\n              break-normal\n              pt-6\n              pb-2\n              text-3xl\n              md:text-4xl\n            "
                             },
                             [
-                              _vm._v(
-                                "\n            " +
-                                  _vm._s(post.title) +
-                                  "\n          "
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "\n                text-transparent\n                bg-gradient-to-r bg-clip-text\n                from-blue-200\n                to-green-700\n              "
+                                },
+                                [_vm._v(_vm._s(post.title) + "\n            ")]
                               )
                             ]
                           ),
@@ -20741,11 +20768,29 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _c("p", { staticClass: "py-6" }, [
-                          _vm._v(
-                            "\n          " + _vm._s(post.content) + "\n        "
-                          )
-                        ]),
+                        _c(
+                          "p",
+                          {
+                            staticClass:
+                              "\n            py-6\n            text-transparent\n            bg-gradient-to-r bg-clip-text\n            from-blue-200\n            to-green-700\n          "
+                          },
+                          [
+                            _c(
+                              "span",
+                              {
+                                staticClass:
+                                  "\n              text-transparent\n              bg-gradient-to-r bg-clip-text\n              from-blue-200\n              to-green-700\n            "
+                              },
+                              [
+                                _vm._v(
+                                  "\n            " +
+                                    _vm._s(post.content) +
+                                    "\n          "
+                                )
+                              ]
+                            )
+                          ]
+                        ),
                         _vm._v(" "),
                         _c(
                           "button",

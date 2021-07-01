@@ -17,21 +17,45 @@
               class="
                 font-bold font-sans
                 break-normal
-                text-gray-900
                 pt-6
                 pb-2
                 text-3xl
                 md:text-4xl
               "
             >
-              {{ post.title }}
+              <span
+                class="
+                  text-transparent
+                  bg-gradient-to-r bg-clip-text
+                  from-blue-200
+                  to-green-700
+                "
+                >{{ post.title }}
+              </span>
             </h1>
             <p class="text-sm md:text-base font-normal text-gray-600">
               Published at {{ post.created_at }}
             </p>
           </div>
-          <p class="py-6">
-            {{ post.content }}
+          <p
+            class="
+              py-6
+              text-transparent
+              bg-gradient-to-r bg-clip-text
+              from-blue-200
+              to-green-700
+            "
+          >
+            <span
+              class="
+                text-transparent
+                bg-gradient-to-r bg-clip-text
+                from-blue-200
+                to-green-700
+              "
+            >
+              {{ post.content }}
+            </span>
           </p>
 
           <button
